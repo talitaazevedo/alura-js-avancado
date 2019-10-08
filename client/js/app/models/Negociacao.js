@@ -17,7 +17,7 @@ class Negociacao{
     }
     //isso aqui é um metodo, é uma especie de função
 
-    obtemVolume(){
+    get volume(){
         return this._quantidade * this._valor;
     }
 
@@ -36,3 +36,4 @@ class Negociacao{
 
 
 }
+
