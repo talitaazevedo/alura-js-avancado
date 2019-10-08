@@ -13,5 +13,10 @@ Ministrado pelo professor `Flávio Henrique`
 
 - Ecmascript `ES6,7,8`.
 
+###`npm start`
+
+Navegue até a pasta  e execute o comando `npm start ` no terminal para rodar o server node.
+
+
 
 
