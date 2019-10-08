@@ -10,16 +10,20 @@ class NegociacaoController {
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
         this._listaNegociacoes = new ListaNegociacoes();
+        this._negociacoesView = new NegociacoesView($("#negociacoes-view"));
+        // metodo update recebe lista de negociacoes 
+        this._negociacoesView.update(this._listaNegociacoes);
 
     }
 
 
     adiciona(event) {
         event.preventDefault();
-        alert("Chamei ação do Controller");
+        //alert("Chamei ação do Controller");
         //... signiffica que o array será desmembrado spread
-        this._listaNegociacoes.adiciona(this._criaNegociacao);
-        console.log(this._listaNegociacoes.negociacoes);
+        this._listaNegociacoes.adiciona(this._criaNegociacao());
+        this._negociacoesView.update(this._listaNegociacoes);
+        //console.log(this._listaNegociacoes.negociacoes);
         this._limpaFormulario();
     }
     //_ antes do metodo significa que o metodo so pode ser chamado pela própria classe
