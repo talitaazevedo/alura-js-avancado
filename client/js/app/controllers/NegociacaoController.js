@@ -9,10 +9,19 @@ class NegociacaoController {
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
+        //Nova Instancia de Classe
         this._listaNegociacoes = new ListaNegociacoes();
+        
+        this._mensagemView = new MensagemView($("#mensagem-view"));
+        this._mensagem = new Mensagem();
+        
+
+        //Instancia de classe que pega elementos no html view
         this._negociacoesView = new NegociacoesView($("#negociacoes-view"));
-        // metodo update recebe lista de negociacoes 
+        
+        //Apos receber a o elemento recebe a instancia da classe criada em models
         this._negociacoesView.update(this._listaNegociacoes);
+        this._mensagemView.update(this._mensagem);
 
     }
 
@@ -23,6 +32,9 @@ class NegociacaoController {
         //... signiffica que o array será desmembrado spread
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         this._negociacoesView.update(this._listaNegociacoes);
+        // Aplica o update após receber a mensagem
+        this._mensagem.texto = 'Negociação Adicionada com sucesso!!';
+        this._mensagemView.update(this._mensagem);
         //console.log(this._listaNegociacoes.negociacoes);
         this._limpaFormulario();
     }
