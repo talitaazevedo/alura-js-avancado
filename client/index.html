@@ -48,48 +48,27 @@
     </div>
     
     
-    <script src ='js/app/models/Negociacao.js'></script>
-    
+    <script src="js/app/models/Negociacao.js"></script>
 
-    <script src ='js/app/controllers/NegociacaoController.js'></script>
-    <script src ='js/app/models/ListaNegociacoes.js'></script>
-    
-    <script src ='js/app/view/View.js'></script>
+    <script src="js/app/controllers/NegociacaoController.js"></script>
+    <script src="js/app/helpers/DateHelper.js"></script>
+    <script src="js/app/models/ListaNegociacoes.js"></script>
+    <script src="js/app/view/View.js"></script>
+    <script src="js/app/view/NegociacoesView.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
+    <script src="js/app/view/MensagemView.js"></script>
+    <script src="js/app/services/ProxyFactory.js"></script>
  
-    <script src ='js/app/helpers/DateHelper.js'></script>
-
-    <script src ='js/app/view/NegociacoesView.js'></script>
-    
-    <script src ='js/app/models/Mensagem.js'></script>
-    <script src ='js/app/view/MensagemView.js'></script>
+    <script src="js/app/helpers/Bind.js"></script>
     
     
  
     <script>
-        //brincando com a classe
-        var n1 = new Negociacao(new Date, 2, 200);
-        //Object.freeze(n1); congela o objeto; 
-        var amanha = new Date();
-        amanha.setDate(11);
-        n1.data = amanha;
-        console.log(n1.data);
-        n1.data.setDate(27);
-        console.log(n1.data);
-
-        ///////////////////////////////////////////// 
+            ///////////////////////////////////////////// 
         ////// ### Negociacao  ######
-        let negociacaoController = new NegociacaoController();
-
-
-
-
-
-
-
-
-
-
-        </script>
+        const negociacaoController = new NegociacaoController();
+    </script>
+      
      
 </body>
 </html>

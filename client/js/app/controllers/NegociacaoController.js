@@ -19,17 +19,14 @@ class NegociacaoController {
     });
      * 
      */
-    //este código faz a mesma coisa que o código comentado
-    this._listaNegociacoes = new ListaNegociacoes(model => this._negociacoesView.update(model));
-    this._mensagemView = new MensagemView($("#mensagem-view"));
-    this._mensagem = new Mensagem();
-
-    //Instancia de classe que pega elementos no html view
-    this._negociacoesView = new NegociacoesView($("#negociacoes-view"));
-
-    //Apos receber a o elemento recebe a instancia da classe criada em models
-    this._negociacoesView.update(this._listaNegociacoes);
-    this._mensagemView.update(this._mensagem);
+    //este código faz a mesma coisa que o código comentado maas  vamos utilizar o padrão proxy neste projeto
+    //this._listaNegociacoes = new ListaNegociacoes(model => this._negociacoesView.update(model));
+    this._listaNegociacoes = new Bind( 
+        new ListaNegociacoes(),
+        new NegociacoesView($("#negociacoes-view")),'adiciona', 'esvazia');
+    //this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(),['adiciona', 'esvazia'], model =>this._negociacoesView.update(model));
+    //this._mensagem = ProxyFactory.create(new Mensagem(),   ['texto'], model =>  this._mensagemView.update(model));
+    this._mensagem = new Bind(new Mensagem(), new MensagemView($('#mensagem-view')),'texto');    
   }
 
   adiciona(event) {
@@ -37,25 +34,20 @@ class NegociacaoController {
     //alert("Chamei ação do Controller");
     //... signiffica que o array será desmembrado spread
     this._listaNegociacoes.adiciona(this._criaNegociacao());
-    // Aplica o update após receber a mensagem
     this._mensagem.texto = "Negociação Adicionada com sucesso!!";
-    this._mensagemView.update(this._mensagem);
     //console.log(this._listaNegociacoes.negociacoes);
     this._limpaFormulario();
   }
   apaga() {
-    this.ListaNegociacoes.esvazia();
-    this._mensagem.texto = 'Negociações Apagadas com sucesso';
-    this._mensagemView.update(this._mensagem);
-
+    this._listaNegociacoes.esvazia();
+    this._mensagem.texto = 'Negociações Apagadas com sucesso!!';
   }
   //_ antes do metodo significa que o metodo so pode ser chamado pela própria classe
   _criaNegociacao() {
     return new Negociacao(
       DateHelper.textoParaData(this._inputData.value),
       this._inputQuantidade.value,
-      this._inputValor.value
-    );
+      this._inputValor.value);
   }
   _limpaFormulario() {
     this._inputData.value = "";

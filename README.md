@@ -1,5 +1,5 @@
-# alura-js-avançado1
-Curso avançado de JS 01 alura<br>
+# alura-js-avançado1/02
+Curso avançado de JS 01 e 02 alura<br>
 Ministrado pelo professor `Flávio Henrique`
 
 
