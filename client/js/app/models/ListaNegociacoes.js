@@ -21,4 +21,7 @@ class ListaNegociacoes {
     //programação defensiva cria um novo  array de negociacoes evitando que o meu fique exposto
     return [].concat(this._negociacoes);
   }
+  get volumeTotal(){
+      return this._negociacoes.reduce((total,n)=> total +  n.volume,0.0);
+  }
 }
